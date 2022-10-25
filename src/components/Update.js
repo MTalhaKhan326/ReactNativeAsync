@@ -23,12 +23,19 @@ const Update = ({ route }, { navigation }) => {
 
   const [id, prevId] = useState(route.params.item.id)
   const [favourite, prevfavourite] = useState(route.params.item.favourite)
-  const [priority, prevpriority] = useState(route.params.item.priority)
-  console.log("priority :", priority)
-  const [checked, setChecked] = useState(priority);
-  console.log("Taskkkkkkkkkk", priority)
   const priorit = useSelector((state) => state.tasks.task);
-  console.log("priorit",priorit)
+  console.log("priorit", priorit)
+  console.log("idddd", id)
+  const prioritydata = priorit.find((item) => item.id === id)
+  console.log("priorityData",prioritydata.priority)
+ 
+  // console.log("priority :", priority)
+  const [checked, setChecked] = useState();
+  console.log("checkedddddddddddddddddd", checked)
+  // const [priority, prevpriority] = useState(checked)
+  console.log("Priorityyyyyy", checked)
+  // console.log("Taskkkkkkkkkk", priority)
+  
 //   const [description, setDescription]= useState(route.params.description)
   const dispatch = useDispatch();
 
@@ -54,11 +61,13 @@ const updateItem = async() => {
     //   setDescription("");
     //   return;
     // }
+    
 
     dispatch(
       updateTask({
         name: name,
         id: id,
+       priority: checked
        
         // description: description
       })
@@ -114,19 +123,7 @@ const updateItem = async() => {
           onChangeText={setDescription}
           value={description}
         /> */}
-         <TouchableOpacity
-          style={{
-            backgroundColor: "black",
-            padding: 10,
-            margin: 10,
-            width: "90%",
-            borderRadius: 5,
-            alignItems: "center",
-          }}
-          onPress={onSubmitTask}
-        >
-          <Text style={{ color: "white" }}>Update</Text>
-        </TouchableOpacity>
+         
         {/* <Text>{name}</Text> */}
         {/* <Radiobtn selected={true} /> */}
         {/* <Text>{description}</Text> */}
@@ -144,39 +141,53 @@ const updateItem = async() => {
  <RadioButton
         value="1"
         data={priorityList}
-        status={ checked === '1' ? 'checked' : 'unchecked' }
+        status={ prioritydata.priority === '1' ? 'checked' : 'unchecked' }
         onPress={() => {
-          dispatch(updatePriority({
-            task: task,
+          // dispatch(updatePriority({
+          //   task: task,
             priority: '1'
-          }))
+          // }))
           setChecked('1')
         }}
       />
       <RadioButton
         value="2"
 
-        status={ checked === '2' ? 'checked' : 'unchecked' }
+        status={ prioritydata.priority === '2' ? 'checked' : 'unchecked' }
         onPress={() => {
-          dispatch(updatePriority({
-            task: task,
+          // dispatch(updatePriority({
+          //   task: task,
             priority: '2'
-          }))
+          // }))
           setChecked('2')
         }}
       />
        <RadioButton
         value="3"
-
-        status={ checked === '3' ? 'checked' : 'unchecked' }
+       
+// value={prioritydata.priority}
+        status={ prioritydata.priority === '3' ? 'checked' : 'unchecked' }
         onPress={() => {
-          dispatch(updatePriority({
-            task: task,
+          // dispatch(updatePriority({
+          //   task: task,
             priority: '3'
-          }))
+          // }))
           setChecked('3')
         }}
       />
+      <TouchableOpacity
+          style={{
+            backgroundColor: "black",
+            padding: 10,
+            margin: 10,
+            width: "90%",
+            borderRadius: 5,
+            alignItems: "center",
+          }}
+          onPress={onSubmitTask}
+        >
+          <Text style={{ color: "white" }}>Update</Text>
+        </TouchableOpacity>
       </View>
 
   )

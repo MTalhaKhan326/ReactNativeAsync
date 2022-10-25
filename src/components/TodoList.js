@@ -130,9 +130,9 @@ todos
       </ScrollView>
        <TouchableOpacity
           style={{
-            backgroundColor: "black",
-            padding: 10,
-            margin: 10,
+            backgroundColor: "blue",
+            padding: 20,
+            margin: 15,
             width: "90%",
             borderRadius: 5,
             alignItems: "center",
@@ -142,10 +142,10 @@ todos
           <Text style={{ color: "white" }}>All</Text>
       </TouchableOpacity>
         <TouchableOpacity
-          style={{
-            backgroundColor: "black",
-            padding: 10,
-            margin: 10,
+         style={{
+            backgroundColor: "blue",
+            padding: 20,
+            margin: 15,
             width: "90%",
             borderRadius: 5,
             alignItems: "center",
@@ -156,10 +156,10 @@ todos
       </TouchableOpacity>
       
        <TouchableOpacity
-          style={{
-            backgroundColor: "black",
-            padding: 10,
-            margin: 10,
+         style={{
+            backgroundColor: "blue",
+            padding: 20,
+            margin: 15,
             width: "90%",
             borderRadius: 5,
             alignItems: "center",
@@ -169,17 +169,17 @@ todos
           <Text style={{ color: "white" }}>Medium</Text>
       </TouchableOpacity>
        <TouchableOpacity
-          style={{
-            backgroundColor: "black",
-            padding: 10,
-            margin: 10,
+         style={{
+            backgroundColor: "blue",
+            padding: 20,
+            margin: 15,
             width: "90%",
             borderRadius: 5,
             alignItems: "center",
           }}
           onPress={ ()=>{navigation.navigate('LowCategory')}}
         >
-          <Text style={{ color: "white" }}>Low</Text>
+          <Text style={{ color: "white"}}>Low</Text>
       </TouchableOpacity>
     </ScrollView>
     

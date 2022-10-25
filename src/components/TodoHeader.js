@@ -123,10 +123,10 @@ const TodoHeader = ({navigation}) => {
         />
         {/* Button */}
         <TouchableOpacity
-          style={{
-            backgroundColor: "black",
-            padding: 10,
-            margin: 10,
+        style={{
+            backgroundColor: "blue",
+            padding: 20,
+            margin: 15,
             width: "90%",
             borderRadius: 5,
             alignItems: "center",

@@ -45,8 +45,9 @@ export const taskSlice = createSlice({
       console.log("State =", state)
       let updatedData = state.task.find((item) => item.id === action.payload.id)
       updatedData.name = action.payload.name
+      updatedData.priority = action.payload.priority
       
-      console.log("updatedname...................................",updatedData.name)    
+      console.log("updatedname...................................",updatedData )    
    },
      Favorite: (state, action) => {
       const task = action.payload.task

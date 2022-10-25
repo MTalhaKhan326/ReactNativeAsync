@@ -8,19 +8,70 @@ import Searchdata from './src/components/Searchdata';
 import HighCategory from './src/components/HighCategory';
 import LowCategory from './src/components/LowCategory';
 import MediumCategory from './src/components/MediumCategory';
+import { Ionicons } from "@expo/vector-icons";
 import All from './src/components/All';
 // import  Favorite  from './src/redux/taskSlice';
 // import Data from './src/components/Data';
 import Favourite from './src/components/Favourite';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { View } from 'react-native-web';
+// import { green100 } from 'react-native-paper/lib/typescript/styles/themes/v2/colors';
     
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const BottomNavigator = () => {
   return (
-     <Tab.Navigator>
-      <Tab.Screen name="TodoHeader" component={TodoHeader} />
+    <Tab.Navigator tabBarOptions={{
+      style: {
+        position: 'absolute',
+        bottom: 25,
+        left: 20,
+        right: 20 ,
+        elevation: 0,
+        borderRadius: 15,
+        height: 90
+       }
+     }}  screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            if (route.name === 'TodoHeader') {
+              return (
+                <Ionicons
+                  name={
+                    focused
+                      ? 'create'
+                      : 'create'
+                  }
+                  size={size}
+                  color={color}
+                />
+              );
+            } else if (route.name === 'TodoList') { //settings ko menu krna hai
+              return (
+                <Ionicons
+                  name={focused ? 'list' : 'list'}
+                  size={size}
+                  color={color}
+                />
+              );
+            }else if (route.name === 'Favourite') { //settings ko menu krna hai
+              return (
+                <Ionicons
+                  name={focused ? 'star' : 'star'}
+                  size={size}
+                  color={color}
+                />
+              );
+            }
+          },
+          tabBarInactiveTintColor: 'grey',
+          tabBarActiveTintColor: 'white',
+          tabBarInactiveBackgroundColor:'#fff',
+          tabBarHideOnKeyboard:'true',
+          tabBarActiveBackgroundColor:'blue'
+          // tabBarActiveBackgroundColor:'#ff8989'
+        })}>
+      <Tab.Screen name="TodoHeader" component={TodoHeader}   />
       <Tab.Screen name="TodoList" component={TodoList} />
       <Tab.Screen name="Favourite" component={Favourite} />
       {/* <Tab.Screen name="Searchdata" component={Searchdata} /> */}
